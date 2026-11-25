@@ -56,4 +56,8 @@ export interface CallbackReturns {
     [client.callback.SteamCallback.GameOverlayActivated]: {
         active: boolean
     }
+    [client.callback.SteamCallback.GameRichPresenceJoinRequested]: {
+        friend_steam_id: bigint
+        connect: string
+    }
 }

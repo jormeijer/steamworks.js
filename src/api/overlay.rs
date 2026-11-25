@@ -61,6 +61,20 @@ pub mod overlay {
             .activate_invite_dialog(steamworks::LobbyId::from_raw(lobby_id.get_u64().1))
     }
 
+    /// Opens the invite dialog; an invited friend's game receives `connect`
+    /// (as `+connect` on launch, or the GameRichPresenceJoinRequested callback).
+    #[napi]
+    pub fn activate_invite_dialog_connect_string(connect: String) {
+        crate::client::get_client();
+        let connect = std::ffi::CString::new(connect).unwrap();
+        unsafe {
+            steamworks::sys::SteamAPI_ISteamFriends_ActivateGameOverlayInviteDialogConnectString(
+                steamworks::sys::SteamAPI_SteamFriends_v018(),
+                connect.as_ptr(),
+            );
+        }
+    }
+
     #[napi]
     pub fn activate_to_web_page(url: String) {
         let client = crate::client::get_client();

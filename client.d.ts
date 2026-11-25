@@ -57,7 +57,8 @@ export declare namespace callback {
     P2PSessionConnectFail = 7,
     GameLobbyJoinRequested = 8,
     MicroTxnAuthorizationResponse = 9,
-    GameOverlayActivated = 10
+    GameOverlayActivated = 10,
+    GameRichPresenceJoinRequested = 11
   }
   export function register<C extends keyof import('./callbacks').CallbackReturns>(steamCallback: C, handler: (value: import('./callbacks').CallbackReturns[C]) => void): Handle
   export class Handle {
@@ -320,6 +321,11 @@ export declare namespace overlay {
   export function activateDialog(dialog: Dialog): void
   export function activateDialogToUser(dialog: Dialog, steamId64: bigint): void
   export function activateInviteDialog(lobbyId: bigint): void
+  /**
+   * Opens the invite dialog; an invited friend's game receives `connect`
+   * (as `+connect` on launch, or the GameRichPresenceJoinRequested callback).
+   */
+  export function activateInviteDialogConnectString(connect: string): void
   export function activateToWebPage(url: string): void
   export function activateToStore(appId: number, flag: StoreFlag): void
 }
