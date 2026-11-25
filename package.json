@@ -1,6 +1,6 @@
 {
     "name": "@pipelab/steamworks.js",
-    "version": "0.12.2",
+    "version": "0.12.2-ygame.1",
     "main": "index.js",
     "types": "index.d.ts",
     "publishConfig": {
